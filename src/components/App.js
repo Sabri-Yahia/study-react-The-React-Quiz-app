@@ -84,10 +84,12 @@ export default function App() {
   );
 
   useEffect(() => {
-    let url = "http://localhost:9000/questions";
+    let url = "/questions.json";
     axios
       .get(url)
-      .then((res) => dispatch({ type: "dataRecieved", payload: res.data }))
+      .then((res) =>
+        dispatch({ type: "dataRecieved", payload: res.data.questions })
+      )
       .catch((err) => dispatch({ type: "dataFailed" }));
   }, []);
   return (
